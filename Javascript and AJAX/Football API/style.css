@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    height: 100vh;
 }
 
 *,
@@ -24,3 +25,56 @@ body {
     padding: .5em;
 }
 
+.table-container {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.football-img {
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.team-icon {
+    max-width: 75px;
+    max-height: 75px;
+}
+
+.team-table-title {
+    background-color: #ffd700;
+}
+
+.team-table {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+}
+
+.team-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    padding: 1em;
+}
+
+.team-info:nth-child(2n) {
+    background-color: #0b6e4f;
+}
+
+.team-info:nth-child(2n + 1) {
+    background-color: #08a045;
+}
+
+.team-info:nth-child(1) {
+    background-color: #daa520;
+}
+
+.team-info:nth-child(2) {
+    background-color: #c0c0c0;
+}
+
+.team-info:nth-child(3) {
+    background-color: #cd7f32;
+}

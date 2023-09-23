@@ -8,11 +8,19 @@ const loadData = () => {
 }
 
 const fillTable = (data) => {
-    let html = "";
+    const table = document.querySelector("#output");
+    let html = `<div class="table-container">
+    <img class="football-img" src="Football Germany.jpeg">
+    <div class="team-table">`;
     data.forEach(element => {
-        html += `<div>${element.points} by ${element.teamName}</div>`;
+        html += `<div class="team-info">
+        <div>${element.teamName}</div>
+        <div>${element.points} points</div>
+        <div><img class="team-icon" src="${element.teamIconUrl}"></div> 
+        </div>`;
     });
-    document.querySelector("#output").innerHTML = html;
+    html += "</div></div>"
+    table.innerHTML = html;
 }
 
 loadData();
