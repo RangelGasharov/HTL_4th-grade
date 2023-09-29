@@ -12,9 +12,10 @@ const fillTable = (data) => {
     let html = `<div class="table-container">
     <img class="football-img" src="Football Germany.jpeg">
     <div class="team-table">`;
-    data.forEach(element => {
+    data.forEach((element, index) => {
         html += `<div class="team-info">
-        <div>${element.teamName}</div>
+        <div class="team-place">${index + 1}.</div>
+        <div class="team-name">${element.teamName}</div>
         <div>${element.points} points</div>
         <div><img class="team-icon" src="${element.teamIconUrl}"></div> 
         </div>`;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&family=REM:wght@500&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500&family=Poppins&family=REM:wght@500&family=Roboto&display=swap');
 
 body {
     margin: 0;
@@ -9,24 +9,27 @@ body {
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: "Poppins";
+    font-family: "Nunito Sans";
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    background-color: #fe7f2d;
+    background-color: #E55812;
+    /* #fc9f5b #fe7f2d */
+    max-width: 100vw;
 }
 
 .title {
-    font-size: 5em;
-    padding: .5em;
+    padding-left: 1em;
+    width: 100%;
+    font-size: 4em;
 }
 
 .table-container {
     height: 100vh;
+    max-width: 100vw;
     display: flex;
     justify-content: space-between;
 }
@@ -36,13 +39,18 @@ body {
     overflow: hidden;
 }
 
+.alliance-arena-img {
+    object-fit: cover;
+    overflow: hidden;
+}
+
 .team-icon {
     max-width: 75px;
     max-height: 75px;
 }
 
-.team-table-title {
-    background-color: #ffd700;
+.team-name {
+    font-weight: bolder;
 }
 
 .team-table {
@@ -60,21 +68,27 @@ body {
 }
 
 .team-info:nth-child(2n) {
-    background-color: #0b6e4f;
+    background-color: #359C1E;
 }
 
 .team-info:nth-child(2n + 1) {
-    background-color: #08a045;
+    background-color: #40BA6F;
 }
 
 .team-info:nth-child(1) {
-    background-color: #daa520;
+    background: linear-gradient(90deg, #daa520, #ffd700);
 }
 
 .team-info:nth-child(2) {
-    background-color: #c0c0c0;
+    background: linear-gradient(90deg, #c0c0c0, #d3d3d3);
 }
 
 .team-info:nth-child(3) {
-    background-color: #cd7f32;
+    background: linear-gradient(90deg, #cd7f32, #d28c47)
+}
+
+@media screen and (max-width: 1000px) {
+    .title {
+        font-size: 2em;
+    }
 }
