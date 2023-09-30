@@ -49,6 +49,23 @@ body {
     max-height: 75px;
 }
 
+.team-place {
+    width: 0;
+    height: 0;
+    border-top: 2.5em solid #ECE4B7;
+    border-right: 2.5em solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.team-place>span {
+    position: absolute;
+    top: -2.5em;
+    left: .175em;
+    font-weight: bolder;
+}
+
 .team-name {
     font-weight: bolder;
 }
@@ -64,6 +81,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 1em;
+    position: relative;
     padding: 1em;
 }
 

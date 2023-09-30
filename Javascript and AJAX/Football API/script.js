@@ -14,7 +14,7 @@ const fillTable = (data) => {
     <div class="team-table">`;
     data.forEach((element, index) => {
         html += `<div class="team-info">
-        <div class="team-place">${index + 1}.</div>
+        <div class="team-place"><span>${index + 1}</span></div>
         <div class="team-name">${element.teamName}</div>
         <div>${element.points} points</div>
         <div><img class="team-icon" src="${element.teamIconUrl}"></div> 
