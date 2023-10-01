@@ -5,6 +5,10 @@ body {
     height: 100vh;
 }
 
+:root {
+    --amountOfColumns: 3;
+}
+
 *,
 *::before,
 *::after {
@@ -17,7 +21,6 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #E55812;
-    /* #fc9f5b #fe7f2d */
     max-width: 100vw;
 }
 
@@ -29,6 +32,7 @@ body {
 
 .table-container {
     height: 100vh;
+    width: 100%;
     max-width: 100vw;
     display: flex;
     justify-content: space-between;
@@ -72,7 +76,7 @@ body {
 
 .team-table {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(var(--amountOfColumns), 1fr);
     width: 100%;
 }
 
@@ -108,5 +112,32 @@ body {
 @media screen and (max-width: 1000px) {
     .title {
         font-size: 2em;
+    }
+
+    .football-img {
+        display: none;
+    }
+
+    :root {
+        --amountOfColumns: 2;
+    }
+
+    .table-container {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    :root {
+        --amountOfColumns: 1;
+    }
+
+    .table-container {
+        width: 100vw;
+    }
+
+    .title {
+        font-size: 0.8em;
     }
 }
