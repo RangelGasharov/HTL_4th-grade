@@ -1,4 +1,4 @@
-const colorPalette = ["#26670A", "#2C780C", "#358600", "#35910F", "#2E7D0C", "#359C1E"];
+const colorPalette = ["#26670A", "#2C780C", "#35910F", "#2E7D0C"];
 
 const loadData = () => {
     fetch("https://api.openligadb.de/getbltable/bl1/2023").then((result) => {
@@ -23,12 +23,12 @@ const fillTable = (data) => {
             <div><img class="team-icon" src="${element.teamIconUrl}"></div> 
             <div class="team-points"><span>${element.points}</span> PTS</div>
             <div class="team-game-stats">
-                <div><span>6</span> Pld</div>
-                <div><span>15</span> GS</div>
-                <div><span>7</span> GC</div>
-                <div><span>5</span> W</div>
-                <div><span>1</span> D</div>
-                <div><span>0</span> L</div>
+                <div><span>${element.matches}</span> Pld</div>
+                <div><span>${element.goals}</span> GS</div>
+                <div><span>${element.opponentGoals}</span> GC</div>
+                <div><span>${element.won}</span> W</div>
+                <div><span>${element.draw}</span> D</div>
+                <div><span>${element.lost}</span> L</div>
             </div>
         </div>`;
     });
@@ -36,4 +36,10 @@ const fillTable = (data) => {
     table.innerHTML = html;
 }
 
+const fillUpcomingEvents = (data) => {
+    const eventsTable = document.querySelector("#events-content");
+  
+}
+
 loadData();
+fillUpcomingEvents()

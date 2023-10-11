@@ -7,18 +7,40 @@
     <title>Football API</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./Bundesliga Logo.png">
 </head>
 
 <body>
+
     <div class="header">
-        <div class="title"><strong>Bundes</strong>liga 1</div>
         <img src="./Allianz Arena.png" class="alliance-arena-img">
+        <div class="title"><strong>Bundes</strong>liga 1</div>
+
     </div>
 
-    <div class="table-container">
-        <div id="output"></div>
-    </div>
+    <div class="container">
+        <div class="events">
+            <div id="events-content">
+                <div class="upcoming-games-title">Upcoming Games</div>
+                <div class="upcoming-games-content">
+                    <div class="upcoming-games-team-info">Borussia Dortmund</div>
+                    <div class="upcoming-games-date">09.11.2023 18:00</div>
+                    <div class="upcoming-games-team-info">Bayer Leverkusen</div>
+                </div>
+                <div class="recent-games-title">Recent Games</div>
+                <div class="recent-games-content">
+                    <div class="recent-games-team-info">Borussia Dortmund</div>
+                    <div class="recent-games-result">1</div>
+                    <div class="recent-games-team-info">Bayer Leverkusen</div>
+                    <div class="recent-games-result">1</div>
+                </div>
+            </div>
+        </div>
 
+        <div class="table-container">
+            <div id="output"></div>
+        </div>
+    </div>
 </body>
 
 </html>
