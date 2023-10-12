@@ -9,6 +9,15 @@ const loadData = () => {
     })
 }
 
+//https://api.openligadb.de/getcurrentgroup/bl1
+const loadGamesData = () => {
+    fetch("https://api.openligadb.de/getmatchdata/bl1/2023").then((result) => {
+        result.json().then((data) => {
+            console.log(data)
+        })
+    })
+}
+
 const fillTable = (data) => {
     const table = document.querySelector("#output");
     let html = `<div class="table-container">
@@ -16,7 +25,7 @@ const fillTable = (data) => {
     data.forEach((element, index) => {
         let random = Math.floor(Math.random() * colorPalette.length);
         let color = colorPalette[random];
-        html += 
+        html +=
         `<div class="team-info" style="background-color: ${color}">
             <div class="team-place"><span>${index + 1}</span></div>
             <div class="team-name">${element.teamName}</div>
@@ -38,8 +47,9 @@ const fillTable = (data) => {
 
 const fillUpcomingEvents = (data) => {
     const eventsTable = document.querySelector("#events-content");
-  
+    
 }
 
 loadData();
+loadGamesData();
 fillUpcomingEvents()
