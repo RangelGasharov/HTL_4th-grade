@@ -20,13 +20,11 @@ const loadGamesData = () => {
 
 const fillTable = (data) => {
     const table = document.querySelector("#output");
-    let html = `<div class="table-container">
-    <div class="team-table">`;
+    let html = `<div class="team-table">`;
     data.forEach((element, index) => {
         let random = Math.floor(Math.random() * colorPalette.length);
         let color = colorPalette[random];
-        html +=
-        `<div class="team-info" style="background-color: ${color}">
+        html += `<div class="team-info" style="background-color: ${color}">
             <div class="team-place"><span>${index + 1}</span></div>
             <div class="team-name">${element.teamName}</div>
             <div><img class="team-icon" src="${element.teamIconUrl}"></div> 
@@ -47,7 +45,7 @@ const fillTable = (data) => {
 
 const fillUpcomingEvents = (data) => {
     const eventsTable = document.querySelector("#events-content");
-    
+
 }
 
 loadData();

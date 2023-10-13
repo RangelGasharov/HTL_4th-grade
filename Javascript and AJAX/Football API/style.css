@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500&family=Poppins&family=REM:wght@500&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,400;6..12,500&family=Poppins&family=REM:wght@500&family=Roboto&display=swap');
 
 body {
     margin: 0;
@@ -32,9 +33,16 @@ body {
     color: white;
 }
 
+.title-part-1 {
+    font-weight: bolder;
+}
+
+.title-part-2 {
+    font-weight: 200;
+}
+
 .alliance-arena-img {
     object-fit: cover;
-    object-fit: none;
     overflow: hidden;
     background-repeat: no-repeat;
 }
@@ -43,13 +51,18 @@ body {
     max-width: 100vw;
     display: flex;
     justify-content: space-around;
+    gap: 2em;
+    padding: 2em;
 }
 
 .events {
     color: white;
-    background: #383A4D;
+    background: #383a4dce;
     display: flex;
     flex-direction: column;
+    border-radius: 2em;
+    padding: 2em 1em;
+    gap: 1em;
 }
 
 .upcoming-games-title {
@@ -64,6 +77,7 @@ body {
 
 .upcoming-games-content {
     display: grid;
+    gap: 2em;
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -76,13 +90,22 @@ body {
 
 .recent-games-content {
     display: grid;
-    gap: 1em;
+    gap: 2em;
     grid-template-columns: repeat(2, 1fr);
 }
 
+.upcoming-games-team1-info,
+.upcoming-games-team2-info,
+.recent-games-team1-info,
+.recent-games-team2-info,
+.recent-games-team1-result,
+.recent-games-team2-result {
+    padding: 1em;
+}
+
 .team-icon {
-    max-width: 75px;
-    max-height: 75px;
+    max-width: 50px;
+    max-height: 50px;
 }
 
 .team-place {
@@ -119,12 +142,12 @@ body {
 
 .team-name {
     font-weight: bolder;
+    word-wrap: break-word;
 }
 
 .team-table {
     display: grid;
     grid-template-columns: repeat(var(--amountOfColumns), 1fr);
-    width: 100%;
 }
 
 .team-info {
@@ -152,23 +175,104 @@ body {
     background: linear-gradient(90deg, #cd7f32, #d28c47)
 }
 
-@media screen and (max-width: 1000px) {
-    .title {
-        font-size: 2em;
+@media screen and (max-width: 1400px) {
+    .team-table {
+        font-size: .9em;
     }
 
-    .football-img {
-        display: none;
-    }
-
-    :root {
-        --amountOfColumns: 2;
+    .team-game-stats {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media screen and (max-width: 1100px) {
-
+@media screen and (max-width: 1350px) {
     :root {
         --amountOfColumns: 1;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .title {
+        font-size: 3em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .team-game-stats {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .title {
+        font-size: 2.5em;
+    }
+
+    .team-game-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .title {
+        font-size: 1.5em;
+    }
+
+    .events {
+        font-size: .85em;
+    }
+
+    .team-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .events {
+        font-size: .7em;
+    }
+
+    .team-table {
+        font-size: .8em;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .upcoming-games-date {
+        font-size: 1em;
+    }
+
+    .title {
+        font-size: 1em;
+    }
+
+    .events {
+        font-size: .6em;
+    }
+
+    .team-game-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .team-table {
+        font-size: .6em;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    .team-table {
+        font-size: .4em;
+    }
+
+    .events {
+        font-size: .4em;
     }
 }
