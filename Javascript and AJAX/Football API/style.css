@@ -42,6 +42,8 @@ body {
 }
 
 .alliance-arena-img {
+    height: auto;
+    width: 100%;
     object-fit: cover;
     overflow: hidden;
     background-repeat: no-repeat;
@@ -70,6 +72,11 @@ body {
     font-weight: 500;
 }
 
+.upcoming-games-team-image {
+    max-width: 75px;
+    max-height: 75px;
+}
+
 .recent-games-title {
     font-size: 2em;
     font-weight: 500;
@@ -77,8 +84,15 @@ body {
 
 .upcoming-games-content {
     display: grid;
-    gap: 2em;
+    gap: 1em;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.upcoming-games-team1-info,
+.upcoming-games-team2-info {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
 
 .upcoming-games-date {
@@ -90,7 +104,7 @@ body {
 
 .recent-games-content {
     display: grid;
-    gap: 2em;
+    gap: 1em;
     grid-template-columns: repeat(2, 1fr);
 }
 

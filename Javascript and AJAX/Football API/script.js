@@ -3,7 +3,6 @@ const colorPalette = ["#26670A", "#2C780C", "#35910F", "#2E7D0C"];
 const loadData = () => {
     fetch("https://api.openligadb.de/getbltable/bl1/2023").then((result) => {
         result.json().then((data) => {
-            console.log(data)
             fillTable(data);
         })
     })
@@ -13,7 +12,7 @@ const loadData = () => {
 const loadGamesData = () => {
     fetch("https://api.openligadb.de/getmatchdata/bl1/2023").then((result) => {
         result.json().then((data) => {
-            console.log(data)
+            fillUpcomingEvents(data);
         })
     })
 }
@@ -28,7 +27,7 @@ const fillTable = (data) => {
             <div class="team-place"><span>${index + 1}</span></div>
             <div class="team-name">${element.teamName}</div>
             <div><img class="team-icon" src="${element.teamIconUrl}"></div> 
-            <div class="team-points"><span>${element.points}</span> PTS</div>
+            <div class="team-points"><span>${element.points}</span> ${element.points > 1 ? "PTS" : "PT"}</div>
             <div class="team-game-stats">
                 <div><span>${element.matches}</span> Pld</div>
                 <div><span>${element.goals}</span> GS</div>
@@ -44,10 +43,68 @@ const fillTable = (data) => {
 }
 
 const fillUpcomingEvents = (data) => {
-    const eventsTable = document.querySelector("#events-content");
+    const eventsTable = document.querySelector("#events");
+    const currentTime = new Date();
 
+    let upcomingGamesContent = ""
+    let recentGamesContent = "";
+    let amountOfUpcomingGames =2;
+    let amountOfRecentGames = 2;
+    let upcomingGamesArray = [];
+    let recentGamesArray = [];
+
+    data.forEach(element => {
+        let matchDate = Date.parse(element.matchDateTime);
+        if (matchDate > currentTime) {
+            upcomingGamesArray.push(element);
+        } else {
+            recentGamesArray.push(element);
+        }
+    })
+
+    upcomingGamesArray.slice(0, amountOfUpcomingGames).forEach(element => {
+        upcomingGamesContent += `
+        <div class="upcoming-games-team1-info">
+            <div class="upcoming-games-team1-name">${element.team1.teamName}</div>
+            <div class="upcoming-games-team1-img"><img class="upcoming-games-team-image" src="${element.team1.teamIconUrl}"></div>
+        </div>
+        <div class="upcoming-games-date">${element.matchDateTime}</div>
+        <div class="upcoming-games-team2-info">
+            <div class="upcoming-games-team2-name">${element.team2.teamName}</div>
+            <div class="upcoming-games-team2-img"><img class="upcoming-games-team-image" src="${element.team2.teamIconUrl}"></div>
+        </div>`
+    })
+
+    recentGamesArray.slice(-amountOfRecentGames).forEach(element => {
+        recentGamesContent += `
+        <div class="recent-games-team1-info">
+            <div class="recent-games-team1-name">${element.team1.teamName}</div>
+            <div class="recent-games-team1-img"><img class="upcoming-games-team-image" src="${element.team1.teamIconUrl}"></div>
+        </div>
+        <div class="recent-games-team1-result">${element.matchResults[1].pointsTeam1}</div>
+        <div class="recent-games-team2-info">
+            <div class="recent-games-team2-name">${element.team2.teamName}</div>
+            <div class="recent-games-team2-img"><img class="upcoming-games-team-image" src="${element.team2.teamIconUrl}"></div>
+        </div>
+        <div class="recent-games-team2-result">${element.matchResults[1].pointsTeam2}</div>`
+    })
+
+    let html = `
+        <div class="upcoming-games-container">
+            <div class="upcoming-games-title">Upcoming Games</div>
+                <div class="upcoming-games-content">
+                    ${upcomingGamesContent}
+                </div>    
+            </div>
+        </div>
+        <div class="recent-games-container">
+            <div class="recent-games-title">Recent Games</div>
+            <div class="recent-games-content">
+                    ${recentGamesContent}
+            </div>
+        </div>`
+    eventsTable.innerHTML = html;
 }
 
 loadData();
 loadGamesData();
-fillUpcomingEvents()
