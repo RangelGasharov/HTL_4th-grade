@@ -48,7 +48,7 @@ const fillUpcomingEvents = (data) => {
 
     let upcomingGamesContent = ""
     let recentGamesContent = "";
-    let amountOfUpcomingGames =2;
+    let amountOfUpcomingGames = 2;
     let amountOfRecentGames = 2;
     let upcomingGamesArray = [];
     let recentGamesArray = [];
@@ -63,12 +63,13 @@ const fillUpcomingEvents = (data) => {
     })
 
     upcomingGamesArray.slice(0, amountOfUpcomingGames).forEach(element => {
+        const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
         upcomingGamesContent += `
         <div class="upcoming-games-team1-info">
             <div class="upcoming-games-team1-name">${element.team1.teamName}</div>
             <div class="upcoming-games-team1-img"><img class="upcoming-games-team-image" src="${element.team1.teamIconUrl}"></div>
         </div>
-        <div class="upcoming-games-date">${element.matchDateTime}</div>
+        <div class="upcoming-games-date">${new Date(element.matchDateTime).toLocaleDateString(options)}</div>
         <div class="upcoming-games-team2-info">
             <div class="upcoming-games-team2-name">${element.team2.teamName}</div>
             <div class="upcoming-games-team2-img"><img class="upcoming-games-team-image" src="${element.team2.teamIconUrl}"></div>
@@ -79,12 +80,12 @@ const fillUpcomingEvents = (data) => {
         recentGamesContent += `
         <div class="recent-games-team1-info">
             <div class="recent-games-team1-name">${element.team1.teamName}</div>
-            <div class="recent-games-team1-img"><img class="upcoming-games-team-image" src="${element.team1.teamIconUrl}"></div>
+            <div class="recent-games-team1-img"><img class="recent-games-team-image" src="${element.team1.teamIconUrl}"></div>
         </div>
         <div class="recent-games-team1-result">${element.matchResults[1].pointsTeam1}</div>
         <div class="recent-games-team2-info">
             <div class="recent-games-team2-name">${element.team2.teamName}</div>
-            <div class="recent-games-team2-img"><img class="upcoming-games-team-image" src="${element.team2.teamIconUrl}"></div>
+            <div class="recent-games-team2-img"><img class="recent-games-team-image" src="${element.team2.teamIconUrl}"></div>
         </div>
         <div class="recent-games-team2-result">${element.matchResults[1].pointsTeam2}</div>`
     })

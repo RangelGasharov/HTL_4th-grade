@@ -59,11 +59,11 @@ body {
 
 .events {
     color: white;
-    background: #383a4dce;
+    background: #383a4da0;
     display: flex;
     flex-direction: column;
     border-radius: 2em;
-    padding: 2em 1em;
+    padding: 2em 2em;
     gap: 1em;
 }
 
@@ -72,6 +72,7 @@ body {
     font-weight: 500;
 }
 
+.recent-games-team-image,
 .upcoming-games-team-image {
     max-width: 75px;
     max-height: 75px;
@@ -99,6 +100,7 @@ body {
     grid-row: span 2/ span 2;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 1.5em;
 }
 
@@ -115,6 +117,24 @@ body {
 .recent-games-team1-result,
 .recent-games-team2-result {
     padding: 1em;
+}
+
+.upcoming-games-team2-info,
+.upcoming-games-date {
+    border-bottom: 1px solid white;
+}
+
+.recent-games-team2-info,
+.recent-games-team2-result {
+    border-bottom: 1px solid white;
+}
+
+.recent-games-team1-result,
+.recent-games-team2-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
 }
 
 .team-icon {
@@ -189,9 +209,30 @@ body {
     background: linear-gradient(90deg, #cd7f32, #d28c47)
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (min-width: 2400px) {
+    :root {
+        --amountOfColumns: 3;
+    }
+}
+
+@media screen and (max-width: 1800px) {
     .team-table {
-        font-size: .9em;
+        font-size: .85em;
+    }
+
+    .events {
+        font-size: .85em;
+    }
+}
+
+
+@media screen and (max-width: 1600px) {
+    .team-table {
+        font-size: .75em;
+    }
+
+    .events {
+        font-size: .75em;
     }
 
     .team-game-stats {
@@ -244,6 +285,12 @@ body {
     .team-info {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recent-games-team-image,
+    .upcoming-games-team-image {
+        max-width: 50px;
+        max-height: 50px;
     }
 }
 
