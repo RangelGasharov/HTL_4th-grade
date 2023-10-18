@@ -79,6 +79,7 @@ body {
 }
 
 .recent-games-title {
+    margin-top: 1em;
     font-size: 2em;
     font-weight: 500;
 }
