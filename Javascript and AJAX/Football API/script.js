@@ -27,7 +27,7 @@ const fillTable = (data) => {
             <div class="team-place"><span>${index + 1}</span></div>
             <div class="team-name">${element.teamName}</div>
             <div><img class="team-icon" src="${element.teamIconUrl}"></div> 
-            <div class="team-points"><span>${element.points}</span> ${element.points = 1 ? "PT" : "PTS"}</div>
+            <div class="team-points"><span>${element.points}</span> ${element.points == 1 ? "PT" : "PTS"}</div>
             <div class="team-game-stats">
                 <div><span>${element.matches}</span> Pld</div>
                 <div><span>${element.goals}</span> GS</div>
