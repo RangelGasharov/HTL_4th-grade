@@ -1,0 +1,20 @@
+.main {
+   border-style: solid;
+   padding: .1em;
+}
+
+.main:hover {
+    cursor: pointer;
+}
+
+.isOn {
+    border-style: solid;
+    padding: .1em;
+    background-color: aqua;
+    color: black;
+}
+
+.isOff {
+    border-style: solid;
+    padding: .1em;
+}
