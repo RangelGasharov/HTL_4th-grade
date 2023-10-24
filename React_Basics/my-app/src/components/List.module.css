@@ -13,6 +13,11 @@
     border-bottom: 1px solid white;
 }
 
-.main:hover {
+.main div:last-child {
+    border: none;
+}
+
+.main div:hover {
     cursor: pointer;
+    background-color: rgb(26, 86, 92);
 }
