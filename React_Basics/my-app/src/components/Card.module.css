@@ -1,0 +1,30 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: white;
+    color: black;
+    box-shadow: .2em .2em .75em black;
+    margin: 1em 0em;
+}
+
+.img {
+    object-fit: cover;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    padding: .5em 1em;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+
+.textBody {
+    font-weight: lighter;
+}

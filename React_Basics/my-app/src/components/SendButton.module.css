@@ -3,3 +3,8 @@
     background-color: rgb(14, 159, 14);
     padding: .5em 2em;
 }
+
+.main:hover {
+    cursor: pointer;
+    background-color: rgb(15, 120, 15);
+}

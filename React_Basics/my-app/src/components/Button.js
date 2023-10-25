@@ -6,6 +6,6 @@ export default function Button(props) {
   return (
     <div className={isOn ? styles.isOn : styles.isOff} onClick={() => {
       setIsOn(!isOn);
-    }}>{props.name} is {props.age} years old and is {isOn ? "On" : "Off"}</div>
+    }}>{props.name} is {props.age} {props.age == 1 ? "year" : "years"} old and is {isOn ? "On" : "Off"}</div>
   )
 }
