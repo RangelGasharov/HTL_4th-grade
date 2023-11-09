@@ -1,0 +1,49 @@
+.teamInfoContainer {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    background: #DAA520;
+    width: 100vw;
+    height: 10vh;
+}
+
+.teamPlace {
+    width: 0;
+    height: 0;
+    border-top: 2.5em solid #ECE4B7;
+    border-right: 2.5em solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.teamPlace>span {
+    position: absolute;
+    top: -2.5em;
+    left: .175em;
+    font-weight: bolder;
+}
+
+.teamName {
+    font-weight: bolder;
+    word-wrap: break-word;
+}
+
+.teamIcon {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.teamPoints {
+    font-size: 1.8em;
+    font-weight: bolder;
+}
+
+.teamGameStatsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.teamGamesStatsContainer>div>span {
+    font-weight: bold;
+}
