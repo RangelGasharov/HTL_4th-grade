@@ -8,6 +8,12 @@
   font-family: "Nunito Sans";
 }
 
+body {
+  margin: 0;
+  height: 100vh;
+  background: #00051B;
+}
+
 .App {
   width: 100vw;
   height: 100vh;

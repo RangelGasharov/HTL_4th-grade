@@ -2,21 +2,19 @@ import styles from "./TeamInfo.module.css"
 
 export default function TeamInfo(props) {
   return (
-
     <div className={styles.teamInfoContainer}>
-      <div className={styles.teamPlace}>{props.teamPlace}</div>
+      <div className={styles.teamPlace}><span>{props.teamPlace}</span></div>
       <div className={styles.teamName}>{props.teamName}</div>
-      <div className={styles.teamIcon}>{props.teamIcon}</div>
+      <img className={styles.teamIcon} src={props.teamIcon} alt="Football Team"/>
       <div className={styles.teamPoints}>{props.teamPoints} Pts</div>
       <div className={styles.teamGameStatsContainer}>
-        <div className={styles.teamGamesPlayed}>{props.teamGamesPlayed}</div>
-        <div className={styles.teamGoalsScored}>{props.teamGoalsScored}</div>
-        <div className={styles.teamGoalsConceded}>{props.teamGoalsConceded}</div>
-        <div className={styles.teamWins}>{props.teamWins}</div>
-        <div className={styles.teamDraws}>{props.teamDraws}</div>
-        <div className={styles.teamLoses}>{props.teamLoses}</div>
+        <div className={styles.teamGamesPlayed}><span>{props.teamGamesPlayed}</span>&nbsp;Pld</div>
+        <div className={styles.teamGoalsScored}><span>{props.teamGoalsScored}</span>&nbsp;GS</div>
+        <div className={styles.teamGoalsConceded}><span>{props.teamGoalsConceded}</span>&nbsp;GC</div>
+        <div className={styles.teamWins}><span>{props.teamWins}</span>&nbsp;W</div>
+        <div className={styles.teamDraws}><span>{props.teamDraws}</span>&nbsp;D</div>
+        <div className={styles.teamLoses}><span>{props.teamLoses}</span>&nbsp;L</div>
       </div>
     </div>
   )
-
 }

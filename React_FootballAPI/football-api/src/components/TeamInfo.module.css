@@ -10,8 +10,8 @@
 .teamPlace {
     width: 0;
     height: 0;
-    border-top: 2.5em solid #ECE4B7;
-    border-right: 2.5em solid transparent;
+    border-top: 1.5em solid #ECE4B7;
+    border-right: 1.5em solid transparent;
     position: absolute;
     top: 0;
     left: 0;
@@ -22,28 +22,42 @@
     top: -2.5em;
     left: .175em;
     font-weight: bolder;
+    font-size: .6em;
 }
 
 .teamName {
+    display: flex;
+    justify-content: flex-start;
+    grid-column: 1 / span 3;
     font-weight: bolder;
     word-wrap: break-word;
 }
 
 .teamIcon {
+    grid-column: 4 / span 2;
     max-width: 50px;
     max-height: 50px;
 }
 
 .teamPoints {
+    grid-column: 6 / span 2;
     font-size: 1.8em;
     font-weight: bolder;
 }
 
 .teamGameStatsContainer {
+    grid-column: 8 / span 4;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.teamGamesStatsContainer>div>span {
+.teamGameStatsContainer>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+}
+
+.teamGameStatsContainer>div>span {
     font-weight: bold;
 }
