@@ -2,9 +2,22 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
-    background: #DAA520;
-    width: 100vw;
-    height: 10vh;
+    background: #35910F;
+    padding: .5em;
+    position: relative;
+}
+
+.teamInfoContainer:first-child {
+    background: linear-gradient(90deg, #DAA520, #FFD700);
+}
+
+.teamInfoContainer:nth-child(2) {
+    background: linear-gradient(90deg, #C0C0C0, #D3D3D3);
+}
+
+.teamInfoContainer:nth-child(3) {
+
+    background: linear-gradient(90deg, #CD7F32, #D28C47);
 }
 
 .teamPlace {
@@ -19,10 +32,10 @@
 
 .teamPlace>span {
     position: absolute;
-    top: -2.5em;
+    top: -2em;
     left: .175em;
     font-weight: bolder;
-    font-size: .6em;
+    font-size: .7em;
 }
 
 .teamName {
@@ -35,14 +48,18 @@
 
 .teamIcon {
     grid-column: 4 / span 2;
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 60px;
+    max-height: 60px;
 }
 
 .teamPoints {
     grid-column: 6 / span 2;
-    font-size: 1.8em;
+    font-size: .8em;
+}
+
+.teamPoints span {
     font-weight: bolder;
+    font-size: 1.8em;
 }
 
 .teamGameStatsContainer {
@@ -55,7 +72,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: lighter;
+    font-weight: light;
 }
 
 .teamGameStatsContainer>div>span {
