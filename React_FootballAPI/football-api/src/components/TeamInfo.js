@@ -6,7 +6,7 @@ export default function TeamInfo(props) {
       <div className={styles.teamPlace}><span>{props.teamPlace}</span></div>
       <div className={styles.teamName}>{props.teamName}</div>
       <img className={styles.teamIcon} alt={props.teamName + "-Logo"} src={props.teamIcon} />
-      <div className={styles.teamPoints}><span>{props.teamPoints}</span> PTS</div>
+      <div className={styles.teamPoints}><span>{props.teamPoints}</span> {props.teamPoints === 1 ? "PT" : "PTS"}</div>
       <div className={styles.teamGameStatsContainer}>
         <div className={styles.teamGamesPlayed}><span>{props.teamGamesPlayed}</span>&nbsp;Pld</div>
         <div className={styles.teamGoalsScored}><span>{props.teamGoalsScored}</span>&nbsp;GS</div>

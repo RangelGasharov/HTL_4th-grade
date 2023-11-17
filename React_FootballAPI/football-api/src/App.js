@@ -1,17 +1,30 @@
 import './App.css';
 import TeamInfo from './components/TeamInfo';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [data, setData] = useState([])
+
+  const loadData = () => {
+    fetch("https://api.openligadb.de/getbltable/bl1/2023").then((result) => {
+      result.json().then((data) => {
+        setData(data)
+      })
+    })
+  }
+
+  useEffect(() => {
+    loadData();
+  }, [])
+
   return (
     <div className="App">
-      <TeamInfo teamPlace="1" teamName="Bayern" teamIcon="https://i.imgur.com/jJEsJrj.png"  teamPoints="28" teamGamesPlayed="10"
-        teamGoalsScored="30" teamGoalsConceded="7" teamWins="9" teamDraws="1" teamLoses="0" />
-      <TeamInfo teamPlace="2" teamName="Bayern" teamIcon="https://i.imgur.com/jJEsJrj.png" teamPoints="28" teamGamesPlayed="10"
-        teamGoalsScored="30" teamGoalsConceded="7" teamWins="9" teamDraws="1" teamLoses="0" />
-      <TeamInfo teamPlace="3" teamName="Bayern" teamIcon="https://i.imgur.com/jJEsJrj.png" teamPoints="28" teamGamesPlayed="10"
-        teamGoalsScored="30" teamGoalsConceded="7" teamWins="9" teamDraws="1" teamLoses="0" />
-      <TeamInfo teamPlace="4" teamName="Bayern" teamIcon="https://i.imgur.com/jJEsJrj.png" teamPoints="28" teamGamesPlayed="10"
-        teamGoalsScored="30" teamGoalsConceded="7" teamWins="9" teamDraws="1" teamLoses="0" />
+      <div id="team-info">
+        {data.map((element, index) =>
+          <TeamInfo teamPlace={index + 1} teamName={element.teamName} teamIcon={element.teamIconUrl} teamPoints={element.points}
+            teamGamesPlayed={element.matches} teamGoalsScored={element.goals} teamGoalsConceded={element.opponentGoals}
+            teamWins={element.won} teamDraws={element.draw} teamLoses={element.lost} />)}
+      </div>
     </div>
   );
 }

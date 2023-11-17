@@ -32,8 +32,8 @@
 
 .teamPlace>span {
     position: absolute;
-    top: -2em;
-    left: .175em;
+    top: -2.2em;
+    left: .075em;
     font-weight: bolder;
     font-size: .7em;
 }
