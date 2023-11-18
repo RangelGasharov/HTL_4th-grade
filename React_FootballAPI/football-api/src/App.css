@@ -22,3 +22,18 @@ body {
 body {
   margin: 0;
 }
+
+#games-info {
+  color: white;
+  background: #383a4da0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2em;
+  padding: 2em 2em;
+  gap: 1em;
+}
+
+.upcoming-games-title,
+.recent-games-title {
+  font-size: 2em;
+}
