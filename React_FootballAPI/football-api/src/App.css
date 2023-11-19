@@ -14,13 +14,57 @@ body {
   background: #00051B;
 }
 
+:root {
+  --amountOfColumns: 2;
+}
+
 .App {
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
 }
 
 body {
   margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 100vw;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  right: 1em;
+  font-size: 4em;
+  color: white;
+}
+
+.title-part-1 {
+  font-weight: bolder;
+}
+
+.title-part-2 {
+  font-weight: 200;
+}
+
+.alliance-arena-img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(var(--amountOfColumns), 1fr);
+  justify-content: space-around;
+  gap: 2em;
+  padding: 2em;
 }
 
 #games-info {
@@ -33,7 +77,96 @@ body {
   gap: 1em;
 }
 
+#teams-info>div {
+  font-weight: bold;
+}
+
 .upcoming-games-title,
 .recent-games-title {
   font-size: 2em;
+}
+
+@media screen and (max-width: 1800px) {
+  .App {
+    font-size: .85em;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  :root {
+    --amountOfColumns: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .App {
+    font-size: .75em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .App {
+    font-size: .65em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .App {
+    font-size: .55em;
+  }
+
+  .upcomingGamesTeamImg {
+    max-width: 50px;
+    max-height: 50px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .App {
+    font-size: .55em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .events {
+    font-size: .7em;
+  }
+
+  .team-table {
+    font-size: .8em;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .upcoming-games-date {
+    font-size: 1em;
+  }
+
+  .title {
+    font-size: 1em;
+  }
+
+  .events {
+    font-size: .6em;
+  }
+
+  .team-game-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .team-table {
+    font-size: .6em;
+  }
+}
+
+@media screen and (max-width: 250px) {
+  .team-table {
+    font-size: .4em;
+  }
+
+  .events {
+    font-size: .4em;
+  }
 }
