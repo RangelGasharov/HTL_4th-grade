@@ -35,18 +35,18 @@ body {
   position: relative;
 }
 
-.title {
+.header-title {
   position: absolute;
   right: 1em;
   font-size: 4em;
   color: white;
 }
 
-.title-part-1 {
+.header-title-part-1 {
   font-weight: bolder;
 }
 
-.title-part-2 {
+.header-title-part-2 {
   font-weight: 200;
 }
 
@@ -108,65 +108,27 @@ body {
   .App {
     font-size: .65em;
   }
+
+  .upcomingGamesTeamImg {
+    max-width: 25px;
+    max-height: 25px;
+  }
 }
 
 @media screen and (max-width: 450px) {
   .App {
     font-size: .55em;
-  }
-
-  .upcomingGamesTeamImg {
-    max-width: 50px;
-    max-height: 50px;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .App {
-    font-size: .55em;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .events {
-    font-size: .7em;
-  }
-
-  .team-table {
-    font-size: .8em;
+  .header-title {
+    font-size: 3em;
   }
 }
 
 @media screen and (max-width: 350px) {
-  .upcoming-games-date {
-    font-size: 1em;
-  }
-
-  .title {
-    font-size: 1em;
-  }
-
-  .events {
-    font-size: .6em;
-  }
-
-  .team-game-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 300px) {
-  .team-table {
-    font-size: .6em;
-  }
-}
-
-@media screen and (max-width: 250px) {
-  .team-table {
-    font-size: .4em;
-  }
-
-  .events {
-    font-size: .4em;
+  .header-title {
+    font-size: 2em;
   }
 }

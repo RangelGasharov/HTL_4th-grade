@@ -1,8 +1,22 @@
 .upcomingGamesContainer {
     display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 1em;
-    grid-template-columns: repeat(2, 1fr);
     padding: 1em;
+}
+
+.upcomingGamesTeamName {
+    grid-column: 1/ span 4;
+    display: flex;
+    align-items: center;
+}
+
+.upcomingGamesTeamImgContainer {
+    grid-column: 5 / span 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .upcomingGamesTeamImg {
@@ -11,6 +25,7 @@
 }
 
 .upcomingGameDate {
+    grid-column: 8 /span 4;
     grid-row: span 2/ span 2;
     display: flex;
     align-items: center;
@@ -18,9 +33,9 @@
     font-size: 1.5em;
 }
 
-.upcomingGamesTeam1,
-.upcomingGamesTeam2 {
-    display: flex;
-    align-items: center;
-    gap: 1em;
+@media screen and (max-width: 500px) {
+    .upcomingGamesTeamImg {
+        max-width: 50px;
+        max-height: 50px;
+    }
 }

@@ -51,7 +51,7 @@ function App() {
     <div className="App">
       <div className="header">
         <img src="./Allianz Arena.png" className="alliance-arena-img" />
-        <div className="title"><span className="title-part-1">Bundes</span><span className="title-part-2">liga 1</span></div>
+        <div className="header-title"><span className="header-title-part-1">Bundes</span><span className="header-title-part-2">liga 1</span></div>
       </div>
 
       <div className="container">
