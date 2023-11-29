@@ -70,7 +70,7 @@ function App() {
         </div>
         <div id="team-info">
           {teamsData.map((element, index) =>
-            <TeamInfo teamPlace={index + 1} teamName={element.teamName} teamIcon={element.teamIconUrl} teamPoints={element.points}
+            <TeamInfo teamPlace={index + 1} teamName={element.teamName} teamIconURL={element.teamIconUrl} teamPoints={element.points}
               teamGamesPlayed={element.matches} teamGoalsScored={element.goals} teamGoalsConceded={element.opponentGoals}
               teamWins={element.won} teamDraws={element.draw} teamLoses={element.lost} />)}
         </div>

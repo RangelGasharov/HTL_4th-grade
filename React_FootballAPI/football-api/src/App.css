@@ -77,13 +77,14 @@ body {
   gap: 1em;
 }
 
-#teams-info>div {
-  font-weight: bold;
+#teams-info>div div {
+  color: rebeccapurple;
 }
 
 .upcoming-games-title,
 .recent-games-title {
   font-size: 2em;
+  margin-top: 1em;
 }
 
 @media screen and (max-width: 1800px) {
