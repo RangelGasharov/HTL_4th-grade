@@ -8,7 +8,6 @@ const loadData = () => {
     })
 }
 
-//https://api.openligadb.de/getcurrentgroup/bl1
 const loadGamesData = () => {
     fetch("https://api.openligadb.de/getmatchdata/bl1/2023").then((result) => {
         result.json().then((data) => {
@@ -54,11 +53,10 @@ const fillUpcomingEvents = (data) => {
     let recentGamesArray = [];
 
     data.forEach(element => {
-        let matchDate = Date.parse(element.matchDateTime);
-        if (matchDate > currentTime) {
-            upcomingGamesArray.push(element);
-        } else {
+        if (element.matchIsFinished === true) {
             recentGamesArray.push(element);
+        } else {
+            upcomingGamesArray.push(element);
         }
     })
 

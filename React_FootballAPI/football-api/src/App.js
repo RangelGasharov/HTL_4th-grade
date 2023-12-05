@@ -15,11 +15,10 @@ function App() {
   let amountOfRecentGames = 2;
 
   gamesData.forEach(element => {
-    let matchDate = Date.parse(element.matchDateTime);
-    if (matchDate > currentTime) {
-      upcomingGamesArray.push(element);
-    } else {
+    if (element.matchIsFinished) {
       recentGamesArray.push(element);
+    } else {
+      upcomingGamesArray.push(element);
     }
   })
 
