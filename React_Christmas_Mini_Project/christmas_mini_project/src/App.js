@@ -1,5 +1,5 @@
 import './App.css';
-import { Canvas } from './components/Canvas.js';
+import Canvas from './components/Canvas';
 import GiftBox from './components/GiftBox';
 
 
