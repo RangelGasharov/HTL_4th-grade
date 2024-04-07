@@ -20,7 +20,7 @@ function TeamsPage() {
     return (
         <div>
             <LinkButton path="matches" text="Go to matches" />
-            <div>
+            <div className="divide-y divide-gray-950">
                 {teamsData.map((element, index) =>
                     <TeamInfo teamPlace={index + 1} teamName={element.teamName} teamIconURL={element.teamIconUrl} teamPoints={element.points}
                         teamGamesPlayed={element.matches} teamGoalsScored={element.goals} teamGoalsConceded={element.opponentGoals}
