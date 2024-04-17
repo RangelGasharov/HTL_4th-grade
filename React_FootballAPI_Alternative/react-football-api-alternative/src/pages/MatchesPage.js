@@ -31,24 +31,23 @@ function MatchesPage() {
     }, [])
 
     return (
-        <div>
-            <div>
-                <LinkButton path="/" text="Go to teams" />
-                <div className="text-4xl flex justify-center mt-10">Upcoming Games</div>
-                <div className="grid divide-x grid-cols-2 my-10">
-                    {upcomingGamesArray.slice(0, amountOfUpcomingGames).map((element) =>
-                        <UpcomingGames team1TeamName={element.team1.teamName} team1IconURL={element.team1.teamIconUrl} upcomingGameDate={element.matchDateTime}
-                            team2TeamName={element.team2.teamName} team2IconURL={element.team2.teamIconUrl} />
-                    )}
-                </div>
-                <div className="text-4xl flex justify-center">Recent Games</div>
-                <div className="grid divide-x grid-cols-2 my-10">
-                    {recentGamesArray.slice(-amountOfRecentGames).map((element) =>
-                        <RecentGames team1TeamName={element.team1.teamName} team1IconURL={element.team1.teamIconUrl}
-                            team1Goals={element.matchResults[1].pointsTeam1} team2Goals={element.matchResults[1].pointsTeam2}
-                            team2TeamName={element.team2.teamName} team2IconURL={element.team2.teamIconUrl} />
-                    )}
-                </div>
+        <div className="bg-teaminfo-default">
+
+            <LinkButton path="/" text="Go to teams" />
+            <div className="text-4xl flex justify-center mt-10">Upcoming Games</div>
+            <div className="grid divide-x divide-gray-950 grid-cols-2 my-10">
+                {upcomingGamesArray.slice(0, amountOfUpcomingGames).map((element) =>
+                    <UpcomingGames team1TeamName={element.team1.teamName} team1IconURL={element.team1.teamIconUrl} upcomingGameDate={element.matchDateTime}
+                        team2TeamName={element.team2.teamName} team2IconURL={element.team2.teamIconUrl} />
+                )}
+            </div>
+            <div className="text-4xl flex justify-center">Recent Games</div>
+            <div className="grid divide-x divide-gray-950 grid-cols-2 mt-10">
+                {recentGamesArray.slice(-amountOfRecentGames).map((element) =>
+                    <RecentGames team1TeamName={element.team1.teamName} team1IconURL={element.team1.teamIconUrl}
+                        team1Goals={element.matchResults[1].pointsTeam1} team2Goals={element.matchResults[1].pointsTeam2}
+                        team2TeamName={element.team2.teamName} team2IconURL={element.team2.teamIconUrl} />
+                )}
             </div>
         </div>
     )
