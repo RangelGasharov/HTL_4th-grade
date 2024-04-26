@@ -1,18 +1,15 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json());
 
 const port = 3000;
 
 const data = [
-    { name: "Mathilde", id: 1 },
-    { name: "Benjamin", id: 2 },
-    { name: "Tobias", id: 3 },
-    { name: "Roberta", id: 4 },
-    { name: "Yasmin", id: 5 }
+    { id: 1, name: "Mathilde", age: 29 },
+    { id: 2, name: "Benjamin", age: 45 },
+    { id: 3, name: "Tobias", age: 34 },
+    { id: 4, name: "Roberta", age: 40 },
+    { id: 5, name: "Yasmin", age: 22 }
 ]
 
 app.get("/people", (req, res) => {
@@ -20,14 +17,31 @@ app.get("/people", (req, res) => {
 })
 
 app.get("/people/:id", (req, res) => {
-    console.log([req.params.id]);
-    res.send(res.params.id);
+    let id = req.params.id;
+    let dataId = data.findIndex((person) => person.id == id);
+    if (dataId == -1) { res.send("Object not available"); }
+    res.send(data[dataId]);
 })
 
 app.post("/people", (req, res) => {
     data.push(req.body);
-
     res.send(req.body);
+})
+
+app.delete("/people/:id", (req, res) => {
+    let id = req.params.id;
+    let dataId = data.findIndex((person) => person.id == id);
+    if (dataId == -1) { res.send("Object not available"); }
+    else {
+        data.splice(dataId, 1);
+        res.send("done");
+    }
+})
+
+app.put("/people/:id", (req, res) => {
+    let id = req.params.id;
+    console.log(id);
+    res.send(id);
 })
 
 app.listen(port, () => {
