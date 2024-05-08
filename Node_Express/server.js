@@ -1,45 +1,69 @@
 const express = require("express");
 const app = express();
-app.use(express.json());
+const db = require("./db");
 
+app.use(express.json());
 const port = 3000;
 
-const data = [
-    { id: 1, name: "Mathilde", age: 29 },
-    { id: 2, name: "Benjamin", age: 45 },
-    { id: 3, name: "Tobias", age: 34 },
-    { id: 4, name: "Roberta", age: 40 },
-    { id: 5, name: "Yasmin", age: 22 }
-]
-
-app.get("/people", (req, res) => {
-    res.send(data);
-})
-
-app.get("/people/:id", (req, res) => {
-    let id = req.params.id;
-    let dataId = data.findIndex((person) => person.id == id);
-    if (dataId == -1) { res.send("Object not available"); }
-    res.send(data[dataId]);
-})
-
-app.post("/people", (req, res) => {
-    data.push(req.body);
-    res.send(req.body);
-})
-
-app.delete("/people/:id", (req, res) => {
-    let id = req.params.id;
-    let dataId = data.findIndex((person) => person.id == id);
-    if (dataId == -1) { res.send("Object not available"); }
-    else {
-        data.splice(dataId, 1);
-        res.send("done");
+app.get("/people", async function (req, res) {
+    try {
+        let result = await db.query("SELECT * FROM people");
+        res.send(result);
+    } catch (error) {
+        res.status(404).send("error:", error)
     }
 })
 
-app.put("/people/:id", (req, res) => {
+app.get("/people/:id", async function (req, res) {
+    let personId = req.params.id;
+    let sql = "SELECT firstname, lastname FROM people WHERE id=?";
+    try {
+        let result = await db.query(sql, [personId]);
+        res.send(result);
+    } catch (error) {
+        res.status(404).send(error.massage);
+    }
+})
+
+app.post("/people", async function (req, res) {
+    let person = req.body;
+    let sqlId = "SELECT MAX(ID) FROM people";
+    let maxId;
+    try {
+        maxId = await db.query(sqlId) + 1;
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+    let sql = "INSERT INTO people values(?,?,?)";
+    try {
+        let result = await db.query(sql, [maxId, person.firstname, person.lastname]);
+        res.send(result);
+    } catch (error) {
+        res.status(404).send(error.massage);
+    }
+})
+
+app.delete("/people/:id", async function (req, res) {
+    let personId = req.params.id;
+    let sql = "DELETE FROM people WHERE id=?";
+    try {
+        let result = await db.query(sql, [personId]);
+        res.send(result);
+    } catch (error) {
+        res.status(404).send(error.massage);
+    }
+})
+
+app.put("/people/:id", async function (req, res) {
     let id = req.params.id;
+    let person = req.body;
+    let sql = "UPDATE people SET firstname=?, lastname=? WHERE id=?";
+    try {
+        let result = await db.query(sql, [person.firstname, person.lastname, id]);
+        res.send(result);
+    } catch (error) {
+        res.status(404).send(error.massage);
+    }
     console.log(id);
     res.send(id);
 })
