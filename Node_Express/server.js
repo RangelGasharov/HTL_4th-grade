@@ -10,7 +10,7 @@ app.get("/people", async function (req, res) {
         let result = await db.query("SELECT * FROM people");
         res.send(result);
     } catch (error) {
-        res.status(404).send("error:", error);
+        res.status(404).send("error:", error)
     }
 })
 
@@ -27,9 +27,16 @@ app.get("/people/:id", async function (req, res) {
 
 app.post("/people", async function (req, res) {
     let person = req.body;
-    let sql = "INSERT INTO people (firstname, lastname) values(?,?)";
+    let sqlId = "SELECT MAX(ID) FROM people";
+    let maxId;
     try {
-        let result = await db.query(sql, [person.firstname, person.lastname]);
+        maxId = await db.query(sqlId) + 1;
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+    let sql = "INSERT INTO people values(?,?,?)";
+    try {
+        let result = await db.query(sql, [maxId, person.firstname, person.lastname]);
         res.send(result);
     } catch (error) {
         res.status(404).send(error.massage);
@@ -57,6 +64,7 @@ app.put("/people/:id", async function (req, res) {
     } catch (error) {
         res.status(404).send(error.massage);
     }
+    console.log(id);
     res.send(id);
 })
 
