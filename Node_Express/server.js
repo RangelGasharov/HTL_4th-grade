@@ -1,7 +1,5 @@
 const express = require("express");
-const User = require('./User');
 const app = express();
-const db = require("./db");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -11,6 +9,15 @@ const port = 3000;
 app.get("/people", async function (req, res) {
     try {
         let result = await db.query("SELECT * FROM people");
+        res.send(result);
+    } catch (error) {
+        res.status(404).send("error:", error)
+    }
+})
+
+app.get("/users", async function (req, res) {
+    try {
+        let result = await db.query("SELECT * FROM users");
         res.send(result);
     } catch (error) {
         res.status(404).send("error:", error)
@@ -76,13 +83,41 @@ app.listen(port, () => {
 })
 
 app.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    let sql = "INSERT INTO users (username, userpassword) values (?,?)";
     try {
-        const { username, password } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({ username, password: hashedPassword });
-        //  await user.save();
-        res.status(201).json({ message: 'User registered successfully' });
+        let result = await db.query(sql, [username, hashedPassword]);
+        res.send(result);
     } catch (error) {
-        res.status(500).json({ error: 'Registration failed' });
+        res.status(404).send(error.massage);
+    }
+    res.status(201).json({ message: 'User registered successfully' });
+});
+
+app.post('/login', async (req, res) => {
+    try {
+        const { username, userpassword } = req.body;
+        let sql = "SELECT * FROM users WHERE username=?";
+        try {
+            const user = await db.query(sql, [username]);
+            if (!user) {
+                return res.status(401).json({ error: 'Authentication failed' });
+            }
+            const passwordMatch = await bcrypt.compare(userpassword, user[0].userpassword);
+            if (!passwordMatch) {
+                return res.status(401).json({ error: 'Wrong password' });
+            }
+            const token = jwt.sign({ id: user.id }, 'your-secret-key', {
+                expiresIn: '1h',
+            });
+            res.status(200).json({ token });
+        } catch (error) {
+            res.status(404).send(error.massage);
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Login failed' });
     }
 });
+
+module.exports = app;
