@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const db = require("./db")
 
 app.use(express.json());
 const port = 3000;
@@ -11,7 +12,7 @@ app.get("/people", async function (req, res) {
         let result = await db.query("SELECT * FROM people");
         res.send(result);
     } catch (error) {
-        res.status(404).send("error:", error)
+        res.status(404).send("error:", error);
     }
 })
 
@@ -20,7 +21,7 @@ app.get("/users", async function (req, res) {
         let result = await db.query("SELECT * FROM users");
         res.send(result);
     } catch (error) {
-        res.status(404).send("error:", error)
+        res.status(404).send("error:", error.message);
     }
 })
 
@@ -31,7 +32,7 @@ app.get("/people/:id", async function (req, res) {
         let result = await db.query(sql, [personId]);
         res.send(result);
     } catch (error) {
-        res.status(404).send(error.massage);
+        res.status(404).send(error.message);
     }
 })
 
@@ -108,7 +109,7 @@ app.post('/login', async (req, res) => {
             if (!passwordMatch) {
                 return res.status(401).json({ error: 'Wrong password' });
             }
-            const token = jwt.sign({ id: user.id }, 'your-secret-key', {
+            const token = jwt.sign({ id: user[0].id }, 'your-secret-key', {
                 expiresIn: '1h',
             });
             res.status(200).json({ token });
